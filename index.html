@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Rutas de Colombia</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <style>
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+}
+
+/* Contenedor Principal */
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Estilos del Mapa */
+#map {
+    flex: 1;
+    height: 100%;
+}
+
+/* Panel de Control */
+#controls {
+    width: 320px;
+    padding: 20px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Estilos de Formularios */
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilos Mejorados para Select */
+select {
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select:focus {
+    outline: none;
+    border-color: #f1c40f;
+    box-shadow: 0px 0px 8px rgba(241, 196, 15, 0.7);
+}
+
+/* Estilos para Opciones */
+option {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-size: 16px;
+    padding: 10px;
+}
+
+option:checked {
+    background-color: #f1c40f !important;
+    color: #fff !important;
+}
+
+/* Botón de Calcular */
+button {
+    background-color: #f1c40f;
+    color: #2c3e50;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #e67e22;
+    color: white;
+}
+
+/* Mensajes de Información */
+.info-message {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #bee5eb;
+}
+
+/* Sección de Resultados */
+#result {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="map"></div>
+        <div id="controls">
+            <h1>Rutas de Colombia</h1>
+            <label for="origin">Ciudad Origen:</label>
+            <select id="origin"></select>
+
+            <label for="destination">Ciudad Destino:</label>
+            <select id="destination"></select>
+
+            <label for="algorithm">Algoritmo:</label>
+            <select id="algorithm">
+                <option value="astar">Búsqueda (A*)</option>
+                <option value="greedy">Búsqueda (Voraz)</option>
+            </select>
+            
+            <button id="calculate">Calcular Ruta</button>
+            
+            <label for="showConnections">Mostrar Conexiones:</label>
+            <input type="checkbox" id="showConnections">
+
+            <div id="result">
+                <p>Selecciona dos ciudades y un algoritmo para calcular la ruta.</p>
+                <div class="info-message">
+                    <strong>Nota:</strong> Algunas ciudades tienen conexiones limitadas o inexistentes en los datos proporcionados.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
