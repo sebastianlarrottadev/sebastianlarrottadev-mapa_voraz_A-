@@ -18,6 +18,7 @@ body {
 /* Contenedor Principal */
 #container {
     display: flex;
+    flex-wrap: wrap;
     height: 100vh;
 }
 
@@ -25,6 +26,7 @@ body {
 #map {
     flex: 1;
     height: 100%;
+    min-height: 50vh;
 }
 
 /* Panel de Control */
@@ -51,7 +53,7 @@ label {
     margin-top: 10px;
 }
 
-select, button {
+select, button, input[type="checkbox"] {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -60,39 +62,6 @@ select, button {
     font-size: 16px;
 }
 
-/* Estilos Mejorados para Select */
-select {
-    background-color: #fff !important;
-    color: #000 !important;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 16px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-select:focus {
-    outline: none;
-    border-color: #f1c40f;
-    box-shadow: 0px 0px 8px rgba(241, 196, 15, 0.7);
-}
-
-/* Estilos para Opciones */
-option {
-    background-color: #fff !important;
-    color: #000 !important;
-    font-size: 16px;
-    padding: 10px;
-}
-
-option:checked {
-    background-color: #f1c40f !important;
-    color: #fff !important;
-}
-
-/* Botón de Calcular */
 button {
     background-color: #f1c40f;
     color: #2c3e50;
@@ -123,6 +92,37 @@ button:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* RESPONSIVIDAD */
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #map {
+        height: 60vh;
+    }
+
+    #controls {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    select, button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
     </style>
 </head>
 <body>
